@@ -15,7 +15,7 @@ table(dtNotas$Grupo)
 
 ## Bidimensional
 
-t = table( cut(dtNotas$NotaJunio, breaks = 5*(0:2),labels = FALSE, right = FALSE), dbtNotas$Grupo,dnn = c('Calificacion','Grupo'))
+t = table( cut(dtNotas$NotaJunio, breaks = 5*(0:2),labels = FALSE, right = FALSE), dtNotas$Grupo,dnn = c('Calificacion','Grupo'))
 rownames(t) <- c('Suspenso', 'Aprobado')
 
 t
@@ -24,13 +24,19 @@ t
 
 ## Diagrama de Barras
 
-barplot(dtNotas[Grupo = A])
+barplot(table(dtNotas$Grupo[dtNotas$NotaJunio >= 5]))
 
 ## Diagrama de Sectores
 
+pie(table(dtNotas$Grupo[dtNotas$NotaFinalSeptiembre >= 5]),clockwise = TRUE)
+
 ## Histograma
 
+hist(dtNotas$NotaFinalSeptiembre)
+
 ## Diagrama de Caja
+
+boxplot(formula = TotalPracticas ~ Grupo, data = dtNotas )
 
 ## Recta de Regresion Lineal sobre un Grafico de Puntos
 
