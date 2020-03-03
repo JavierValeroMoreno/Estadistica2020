@@ -1,6 +1,6 @@
 library(data.table)
 
-archivo <- "C:/Users/javi/Documents/Universidad/2019-2020/Estadistica/Notas.csv"
+archivo <- "/home/jpramez/Documentos/ESTADISTICA/P01/Notas.csv"
 
 dfNotas <- read.csv(archivo,TRUE, sep = ';', dec = ',')
 dtNotas <- data.table(dfNotas)
@@ -19,12 +19,11 @@ t = table( cut(dtNotas$NotaJunio, breaks = 5*(0:2),labels = FALSE, right = FALSE
 rownames(t) <- c('Suspenso', 'Aprobado')
 
 t
-
 ####GRAFICOS####
 
 ## Diagrama de Barras
 
-barplot(table(dtNotas$Grupo[dtNotas$NotaJunio >= 5]))
+barplot(table(dtNotas$Grupo[dtNotas$NotaJunio >= 5]), xlab = "GRUPO", ylab = "ALUMNOS APROBADOS", col = c("lightgreen","lightblue"))
 
 ## Diagrama de Sectores
 
@@ -36,7 +35,7 @@ hist(dtNotas$NotaFinalSeptiembre)
 
 ## Diagrama de Caja
 
-boxplot(formula = TotalPracticas ~ Grupo, data = dtNotas )
+boxplot(formula = TotalPracticas ~ Grupo, data = dtNotas)
 
 ## Recta de Regresion Lineal sobre un Grafico de Puntos
 
